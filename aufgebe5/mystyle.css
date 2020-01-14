@@ -1,0 +1,33 @@
+.tabelschow{
+    background-color:wheat;
+    margin: 40px;
+    width: 80%;
+    height:80%;
+    padding: 20px;
+    text-align: center;
+
+
+
+
+
+}
+ #hed{
+     background-color:gray;
+     border: dotted 2px wheat;
+     text-align: center;
+
+
+
+ }
+
+tabelschow td {
+    color: blue;
+}
+
+.klein{
+    background-color: red;
+}
+
+.gross{
+    background-color: yellow;
+}

@@ -1,0 +1,63 @@
+body { background-color: #AFAFAF; }
+
+.container { max-width: 1600px;}
+
+.panel {
+   margin: 50px auto;
+   width: 100%;
+     box-shadow: 10px 10px 5px #888888;
+}
+
+.panel-default .panel-heading{
+   background-color:#76B900;
+   color:white;
+}
+
+.form-control { margin-bottom: 15px; }
+
+.thumbnail {
+   margin-bottom: 25px;
+   padding: 0;
+   box-shadow: 10px 10px 5px rebeccapurple;
+}
+   .thumbnail h4 {
+      overflow: hidden;
+      margin: 0 0 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.2;
+   }
+   .thumbnail:hover .buttons-edit { visibility: visible; }
+   .thumbnail p {
+
+      padding: 10px 0 0 10px;
+   }
+
+   .thumbnail h4 {
+      padding: 0 0 0 10px;
+   }
+
+.buttons-edit {
+   position: absolute;
+   top: 10px;
+   right: 25px;
+   visibility: hidden;
+   
+
+
+}
+
+.alert-info {
+  font-size: 2em;
+  text-align: center;
+}
+
+.btn-primary {
+background-color:#76B900;
+border-color:#76B900;
+}
+
+.btn-primary:hover {
+background-color:#FF5F00;
+border-color:#FF5F00;
+}

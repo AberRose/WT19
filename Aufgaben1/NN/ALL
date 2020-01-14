@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<tittle>  Aufgabe1 </tittle>
+</head>
+<body>
+  <header>
+   <h1>Alle Teilnehmer-innen </h1> 
+   < img scr =                 /> 
+  </header>
+ 
+ <nav>
+ 
+< a herf=" ./ag.html " A-G</a> 
+< a herf=" ./hl.html " H-L</a> 
+< a herf=" ./mr.html "M-R </a> 
+< a herf=" ./sz.html " S-Z</a> 
+
+ 
+  
+  
+  </nav> 
+  
+  
+ 
+<footer> 
+           <p>   Aber Araash </P> 
+</footer>    
+   
+   
+</body>
+</html>

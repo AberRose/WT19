@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Staedte</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body onload='createTable(); document.getElementById("filter").focus();'>
+<div class="container">
+	<h1>Städte</h1>
+
+	<form class="form-horizontal" role="form">
+		<div class="form-group row">
+			<label for="filter" class="col-form-label col-2">Filter:</label>
+			<div class="col-10">
+				<input class="form-control" id="filter" oninput = "createTable()" type="text" placeholder="Stadt oder Gruendungsjahr" >
+			</div>
+		</div>
+	</form>
+
+	<div id="table" >
+	</div>
+
+	<div id="unten"></div>
+</div>
+<script>
+
+	function createTable()
+	{
+		var staedte = [
+			{ "jahr" : 1237, "stadt" : "Berlin", "link" : "http://de.wikipedia.org/wiki/Berlin", "bild" : "images/berlin.png"},
+			{ "jahr" : 1624, "stadt" : "New York", "link" : "http://de.wikipedia.org/wiki/New_York_City", "bild" : "images/newyork.png"},
+			{ "jahr" : 1252, "stadt" : "Stockholm", "link" : "http://de.wikipedia.org/wiki/Stockholm", "bild" : "images/stockholm.png"},
+			{ "jahr" : 852, "stadt" : "Madrid", "link" : "http://de.wikipedia.org/wiki/Madrid", "bild" : "images/madrid.png"},
+			{ "jahr" : 1827, "stadt" : "Bremerhaven", "link" : "http://de.wikipedia.org/wiki/Bremerhaven", "bild" : "images/bremerhaven.png"},
+			{ "jahr" : 150, "stadt" : "Bremen", "link" : "http://de.wikipedia.org/wiki/Bremen", "bild" : "images/bremen.png"},
+			{ "jahr" : 1202, "stadt" : "Bernau", "link" : "http://de.wikipedia.org/wiki/Bernau_bei_Berlin", "bild" : "images/bernau.png"},
+			{ "jahr" : 929, "stadt" : "Brandenburg", "link" : "http://de.wikipedia.org/wiki/Brandenburg_an_der_Havel", "bild" : "images/brandenburg.png"},
+			{ "jahr" : 805, "stadt" : "Magdeburg", "link" : "http://de.wikipedia.org/wiki/Magdeburg", "bild" : "images/magdeburg.png"},
+			{ "jahr" : 1222, "stadt" : "Marburg", "link" : "http://de.wikipedia.org/wiki/Marburg", "bild" : "images/marburg.png"},
+			{ "jahr" : 766, "stadt" : "Mannheim", "link" : "http://de.wikipedia.org/wiki/Mannheim", "bild" : "images/mannheim.png"},
+			{ "jahr" : 782, "stadt" : "Mainz", "link" : "http://de.wikipedia.org/wiki/Mainz", "bild" : "images/mainz.png"}
+		];
+
+		let input = document.getElementById('filter').value;		// eingegbene Daten (Formular)
+		console.log(input);
+
+		let tableDiv = document.getElementById('table');
+		if(tableDiv.firstChild) tableDiv.removeChild(tableDiv.firstChild);
+		/*
+		die if anweisung oben kann man auch ersetzen, wenn mann nach der for schleife unten replacenode methode schreibt
+
+
+		*/
+
+		let table = document.createElement('TABLE');
+		table.setAttribute('class', 'table table-striped');		// Bootstrap
+		let thead = document.createElement('THEAD');
+		let tr = document.createElement('TR');
+		let th = document.createElement('TH');
+		let tbody = document.createElement('TBODY');
+		let td = document.createElement('TD');
+
+		let _tr = tr.cloneNode(false);							// Variable für Clone von tr
+		let _td = td.cloneNode(false);							// Variable für Clone von td
+
+		// ab hier Spaltenüberschriften
+		let _th = th.cloneNode(false);
+		let _text = document.createTextNode('Nr');
+		_th.appendChild(_text);
+		tr.appendChild(_th);
+
+		_th = th.cloneNode(false);
+		_text = document.createTextNode('Jahr');
+		_th.appendChild(_text);
+		tr.appendChild(_th);
+
+		_th = th.cloneNode(false);
+		_text = document.createTextNode('Stadt');
+		_th.appendChild(_text);
+		tr.appendChild(_th);
+
+		_th = th.cloneNode(false);
+		_text = document.createTextNode('Link');
+		_th.appendChild(_text);
+		tr.appendChild(_th);
+
+		_th = th.cloneNode(false);
+		_th.style.textAlign='center';
+		_text = document.createTextNode('Bild');
+		_th.appendChild(_text);
+		tr.appendChild(_th);
+
+		thead.appendChild(tr);			// Spaltenueberschriften an thead haengen
+		table.appendChild(thead);		// thead an die Tabelle haengen
+
+		// hier muessen jetzt die einzelnen Zeilen in die Tabelle eingelesen werden
+		// das JSON-Array muss ausgelesen werden (for(i=0; i<staedte.length; i++))
+		// Tipp: zunächst einfach alle anzeigen lassen und erst dann das Filtern einbauen
+		// Filtern: die Eingabe mit dem jeweiligen Gründungsjahr bzw. der jeweiligen Stadt
+		// vergleichen
+		// wenn match, dann entsprechende Zeile einfügen
+
+
+		for(let i=0; i<staedte.length;i++)
+		{
+
+			if(staedte[i].stadt.substring(0, input.length).toLowerCase() == input.toLowerCase() ||
+					staedte[i].jahr.toString().substring(0, input.length) == input) {
+				_tr = tr.cloneNode(false); //eine Zeile von der Tabelle erzeugt
+				_td = td .cloneNode(false);
+				_text = document.createTextNode((i+1).toString());
+
+				/*stadt _text = document.createTextNode((i+1).toString());
+                _td.appendChild(_text);
+                kann man nur die folgende Zeile verwenden
+
+                 _td.innerHTML =(i+1).toString();
+                */
+				_td.appendChild(_text);
+				_tr.appendChild(_td);
+
+
+				_td = td .cloneNode(false);
+				_text = document.createTextNode(staedte[i].jahr);
+				_td.appendChild(_text);
+				_tr.appendChild(_td);
+
+
+				_td = td .cloneNode(false);
+				_text = document.createTextNode(staedte[i].stadt);
+				_td.appendChild(_text);
+				_tr.appendChild(_td);
+
+
+
+				_td = td .cloneNode(false);
+				let a = document.createElement('a');
+				a.href=staedte[i].link;
+				a.classList.add('btn', 'btn-sm', 'btn-success');
+				a.innerHTML='Info';
+				a.setAttribute('target', '_blank');
+				_td.appendChild(a);
+				_tr.appendChild(_td);
+
+
+				_td = td .cloneNode(false);
+				_td.style.textAlign = 'center';
+				let img = document.createElement('img');
+				img.src = staedte[i].bild;
+				img.style.height = '60px';
+				img.setAttribute('alt', staedte[i].stadt);
+				_td.appendChild(img);
+				_tr.appendChild(_td);
+
+
+				tbody.appendChild(_tr); //haengen an das body
+			}
+		}
+
+		table.appendChild(tbody);
+		tableDiv.appendChild(table);
+	}
+
+	// hier noch eine Funktion, die das Bild, auf das geklickt wurde, in
+	// das Div "unten" clont
+
+
+
+
+</script>
+</body>
+</html>

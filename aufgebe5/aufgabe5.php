@@ -36,7 +36,7 @@ function zufzahl($max, $anzahl, $stellen)  // stellen für splte und kopf und an
 	echo '</table>';
 }
 
-function abschneiden($zahl,$stellen=2)  // nicht verstehen
+function abschneiden($zahl,$stellen=2)  
 {
 	$base = pow(10,$stellen);
 	return $zahl - ($zahl % $base);

@@ -16,7 +16,7 @@ function zufzahl($max, $anzahl, $stellen)  // stellen für splte und kopf und an
 	
 	for($j=1;$j<=$stellen; $j++)  //kopf der table
 	{
-		echo '<th> '. $j .' </th>';
+		echo '<th> ersten'. $j .'stellen </th>';
 	}
 	
 	echo '</tr> </br>';
@@ -31,7 +31,7 @@ function zufzahl($max, $anzahl, $stellen)  // stellen für splte und kopf und an
 		$gerundet4 = abschneiden($zzahl,4);
 
 
-		echo "<tr><td>".$zzahl."</td> <td>".$gerundet1."</td> <td>".$gerundet2."</td> <td>".$gerundet3."</td> <td>".$gerundet4."</td></tr>";{
+		echo "<tr><td>".$zzahl."</td> <td>".$gerundet1."</td> <td>".$gerundet2."</td> <td>".$gerundet3."</td> <td>".$gerundet4."</td></tr>";
 }
 	echo '</table>';
 }
@@ -49,7 +49,7 @@ function abschneiden($zahl,$stellen=2)  // nicht verstehen
 <h1>Zufallszahlen</h1>
 </header>
 <div>
-<?php zufzahl(20000, 20, 2); ?>
+<?php zufzahl(20000, 20, 4); ?>
 
 </div>
 

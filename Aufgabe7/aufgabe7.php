@@ -24,7 +24,7 @@
    	 * vierter Parameter ist Ihr Passwort (ich habe mein Passwort als Wert der Variablen $password
    	 * in der Datei passwd.inc.pwd abgelegt (siehe oben)
    	 */
-   	$dbh = new DB('_s0569642__mockupdatadb', 'db.f4.htw-berlin.de:3306', 's0569642', 'Lc.mV49.');
+   	$dbh = new DB('_s0569642__mockupdatadb', 'db.f4.htw-berlin.de:3306', 's0569642', 'password');
 
    	/* die folgende Funktion ist nur eine Hilfsfunktion zum Debuggen
    	 * auf der Konsole in den Entwicklertools Ihres Browsers erscheint ...
@@ -53,9 +53,8 @@
              * ändern oder löschen möchten
              * An den einzelnen "Karteikarten" erscheinen edit- und delete-"Buttons" - s.u.
              */
-              $command=$_GET['command']; // command befindet sich in URL
-                   $id=$_POST['id'];
-
+           $command = $_GET['command']; //auslesen des commands
+           $id = $_GET['id'];
               if ($command=='delet')
               { // wenn auf delet clicken 8  command hänget an url für delet mit id auch
                  $dbh->delete($id); // delete() ist ein methode in DB-php ..löscht die daten
@@ -134,9 +133,9 @@
                 <input type="text" class="form-control" name="nachname" value="<?php echo $teilnehmerin['nachname'];?>"/>
                 <input type="text" class="form-control" name="email"    value="<?php echo $teilnehmerin['email'];   ?>"/>
                 <input type="text" class="form-control" name="ipnr"     value="<?php echo $teilnehmerin['ipnr'];    ?> "/>
-                <input type="text" class="form-control" name="id"       value="<?php echo $teilnehmerin['id'];     ?> "/>
+                <input type="text"
 
-                <!--input type='hidden' name='id' value='"<!?php echo $teilnehmerin['id']; ?>"'-->
+                <input type='hidden' class="form-control" name='id' value="<?php echo $teilnehmerin['id'];?>" />
                 <button type="submit" class="btn btn-block btn-primary">Aktualisiern</button>
             </form>
 
@@ -151,12 +150,11 @@
 
                         -->
 
-                        <input type="text" class="form-control" name="vorname"  value="<?php echo $teilnehmerin['vorname']; ?>"/>
-                        <input type="text" class="form-control" name="nachname" value="<?php echo $teilnehmerin['nachname'];?>"/>
-                        <input type="text" class="form-control" name="email"    value="<?php echo $teilnehmerin['email'];   ?>"/>
-                        <input type="text" class="form-control" name="ipnr"     value="<?php echo $teilnehmerin['ipnr'];    ?>"/>
+                        <input type="text" class="form-control" name="vorname"  placeholder="Vorname"/>
+                        <input type="text" class="form-control" name="nachname" placeholder="Nachname"/>
+                        <input type="text" class="form-control" name="email"    placeholder="Email"/>
+                        <input type="text" class="form-control" name="ipnr"     placeholder="IP-Nr"/>
 
-                        <input  type="hidden" name="id" value="'.$id.'"/>
                         <button type="submit" class="btn btn-block btn-primary">anlegen</button>
 
                     </form>
